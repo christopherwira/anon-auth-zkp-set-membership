@@ -2,7 +2,7 @@
 
 ## Overview
 
-We provide the instruction to reproduce our results in our paper.
+We provide the instructions to reproduce our results in our paper.
 
 Here in this directory, we provide the following Solidity files:
 
@@ -24,29 +24,29 @@ Here is our instruction to deploy our Solidity files into the Ethereum Testnet u
 1. Open the Online Remix IDE using your browser
 2. Create a new workspace, choose the `Blank` template, and write the workspace name
 3. After cloning our repository, upload this `contracts` directory using the upload button on the Remix's File Explorer
-4. Compile each Solidity files in the `contracts` directory
+4. Compile each Solidity file in the `contracts` directory
 5. Using the `Deploy & run transactions` button on the sidebar, press the `Deploy` button to deploy our smart contract to the Ethereum Testnet (in this case is Remix VM)
 
-Using the information on the `Deployed Contracts` section, we can interact with the deployed smart contract and invoke the `authenticate` function on our algorithms.
+Using the information in the `Deployed Contracts` section, we can interact with the deployed smart contract and invoke the `authenticate` function on our algorithms.
 
 ## Invoking the function in the Smart Contract
 
 ### Smart Contract Code Input Explanation
 
-On general, the input to our smart contract is an access request object.
+In general, the input to our smart contract is an access request object.
 
-Access request object consists of two object:
+The access request object consists of two objects:
 
-- Statement: an object which contain all public information which can be examined by the smart contract or audited by the other people
-- Proof: an object which contain a witness, a hidden information which need to be encapsulated using the SNARK zero-knowledge property, that can be verified using SNARK verification algorithm.
+- Statement: an object that contains all public information that can be examined by the smart contract or audited by other people
+- Proof: an object that contains a witness, hidden information that needs to be encapsulated using the SNARK zero-knowledge property, that can be verified using the SNARK verification algorithm.
 
-It needs to be noted that we didn't implement any SNARK verification logic into our smart contract because our focus is to analyze the gas cost on the replay attack prevention algorithm on each scheme.
+It needs to be noted that we didn't implement any SNARK verification logic into our smart contract because our focus is to analyze the gas cost of the replay attack prevention algorithm on each scheme.
 
-By assuming we used [Groth16](https://eprint.iacr.org/2016/260) as our SNARK, the size of the proof is 144 bytes if we implement it using [BLS12-381](https://electriccoin.co/blog/new-snark-curve/). To upload this proof to the smart contract, we create a data structure which contains 5 `bytes32` variables (160 bytes).
+By assuming we used [Groth16](https://eprint.iacr.org/2016/260) as our SNARK, the size of the proof is 144 bytes if we implement it using [BLS12-381](https://electriccoin.co/blog/new-snark-curve/). To upload this proof to the smart contract, we create a data structure that contains 5 `bytes32` variables (160 bytes).
 
 #### AnonParking Input
 
-The input can be explain as the following:
+The input can be explained as the following:
 
 ```
 AccessRequests = 
@@ -91,7 +91,7 @@ Example of the Decoded Input from Remix:
 
 #### HashAuth Input
 
-The input can be explain as the following:
+The input can be explained as the following:
 
 ```
 AccessRequests = 
@@ -111,16 +111,16 @@ AccessRequests =
 }
 ```
 
-Unlike the AnonParking scheme, there are no `current_nonce` information on this access request. The smart contract only check whether this proof is unique or not.
+Unlike the AnonParking scheme, there is no `current_nonce` information on this access request. The smart contract only checks whether this proof is unique or not.
 
 #### PseudoAuth Input
 
 The input to this smart contract is identical to the HashAuth scheme.
-This scheme recognize whether the agent is malicious or not by comparing the msg.sender with an AllowList inside the smart contract.
+This scheme recognizes whether the agent is malicious or not by comparing the `msg.sender` with an AllowList inside the smart contract.
 
-On our implementation, the initial Ethereum's account that deploy the transaction is automatically added to the AllowList.
+In our implementation, the initial Ethereum account that deploys the transaction is automatically added to the AllowList.
 
-The constructor function of this scheme can be seen at the following code:
+The constructor function of this scheme can be seen in the following code:
 
 ```
 constructor(){
@@ -132,7 +132,7 @@ constructor(){
 
 #### NPAuth Input
 
-The input to this smart can be explain as the following:
+The input to this smart can be explained as the following:
 
 ```
 AccessRequests = 
@@ -197,7 +197,7 @@ which is converted to the following Hex value:
 [["(change to the current_nonce value)","0x6161616161616161616161616161616161616161616161616161616161616161"],[["0x6161616161616161616161616161616161616161616161616161616161616161","0x6161616161616161616161616161616161616161616161616161616161616161","0x6161616161616161616161616161616161616161616161616161616161616161","0x6161616161616161616161616161616161616161616161616161616161616161","0x6161616161616161616161616161616161616161616161616161616161616161"]]]
 ```
 
-The `current_nonce` value is a `public` variable, thus can be queried by everyone. In Remix IDE, this value can be queried using the `current_nonce` button inside the deployed smart contract section.
+The `current_nonce` value is a `public` variable and thus can be queried by everyone. In Remix IDE, this value can be queried using the `current_nonce` button inside the deployed smart contract section.
 
 #### HashAuth and PseudoAuth Dummy Value
 
@@ -213,7 +213,7 @@ The `current_nonce` value is a `public` variable, thus can be queried by everyon
 
 ## Debugging the Smart Contract
 
-After successfully invoke the `authenticate` function on each scheme, we can check the transaction receipts in the Remix IDE to get the rough gas costs from each scheme.
+After successfully invoking the `authenticate` function on each scheme, we can check the transaction receipts in the Remix IDE to get the rough gas costs from each scheme.
 
 We could get the following information only from the transaction receipt:
 
@@ -221,10 +221,10 @@ We could get the following information only from the transaction receipt:
 - The execution cost
 - The transaction cost (which also includes the execution cost)
 
-In our experiment, we focus our interest on the execution cost, as it is varied across the scheme and depends on how we design the algorithms.
+In our experiment, we focus our interest on the execution cost, as it varies across the scheme and depends on how we design the algorithms.
 
 We analyzed the detailed execution cost using the `Debug` button on the transaction receipt in the Remix IDE.
 
-By recording the remaining gas from each step in the source codes, we can pin-point some lines that contribute a significant gas cost to the execution cost.
+By recording the remaining gas from each step in the source codes, we can pinpoint some lines that contribute a significant gas cost to the execution cost.
 
-We provided the results of our debugging session in the `'./data'` directory.
+We provided the results of our debugging session in the `'../data'` directory.
