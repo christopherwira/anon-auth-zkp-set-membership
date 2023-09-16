@@ -44,5 +44,9 @@ Please clone this repository using your Git client by running
 git clone https://github.com/christopherwira/anon-auth-zkp-set-membership.git
 ```
 
+## License
+
+All source code is made available under the terms of the [MIT license](LICENSE.md). 
+
 [^1]: J. C. L. Ho and C. Lin, “An anonymous on-street parking authentication scheme via zero-knowledge set membership proof,” CoRR, vol. abs/2108.03629, 2021.
 [^2]: D. A. Luong and J. H. Park, “Privacy-preserving blockchain-based healthcare system for iot devices using zk-snark,” IEEE Access, vol. 10, pp. 55 739–55 752 ,2022.
