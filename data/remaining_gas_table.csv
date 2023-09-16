@@ -1,0 +1,8 @@
+Section,AnonParking,HashAuth,PseudoAuth,NPAuth
+initialization,62615,56752,32352,30602
+beginning,37967,32616,8216,6098
+authenticate_function,37848,32519,8119,6001
+checkReplayAttack_function,37638,32309,7909,5791
+verifyProof_function,9572,8807,5624,5396
+emit_function,9339,8574,5391,5163
+end,8168,7403,4220,3992

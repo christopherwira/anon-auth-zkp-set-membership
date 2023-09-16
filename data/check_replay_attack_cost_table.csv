@@ -1,0 +1,4 @@
+Process Detail,AnonParking,HashAuth,PseudoAuth,NPAuth
+Write Operation,22900,20000,0,0
+Read Operation,4200,2100,2100,0
+Hash Calculation,472,960,0,0
