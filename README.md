@@ -4,20 +4,25 @@ by Christopher Wiraatmaja, Shoji Kasahara.
 
 This paper has been submitted for publication in ***5th Conference on Blockchain Research & Applications for Innovative Networks and Services (BRAINS23)***.
 
->We proposed a technique to prevent replay attack into an authentication setting which preserve its user's privacy. Using our previous technique, we developed a blockchain-based authentication scheme that achieves cheaper gas cost and provides better scalability compared to prior works.
+>We proposed a technique to prevent replay attacks into an authentication setting that preserves its user's privacy. Using our previous technique, we developed a blockchain-based authentication scheme that achieves cheaper gas costs and provides better scalability compared to prior works.
 
-![[desired-authentication-scheme.jpg]]
+We provided our proposed anonymous authentication scheme as follows:
+
+![](desired-authentication-scheme.jpg)
+
 *Our Proposed Authentication Scheme*
 
-| **Process Detail**   |   **Stateful**  |          |  **Stateless** |               |
+Using our replay attack prevention algorithm, we achieved cheaper gas costs if compared to similar works. Here is the results of our experiments:
+
+|**Process Detail**| *AnonParking*[^1] | *HashAuth* | *PseudoAuth*[^2] | *NPAuth (Ours)* |
 |------------------|:-----------:|:--------:|:----------:|:-------------:|
-|                  | *AnonParking*[^1] | *HashAuth* | *PseudoAuth*[^2] | *NPAuth (Ours)* |
 | Write Operation  |    22,900   |  20,000  |      -     |       -       |
 | Read Operation   |    4,200    |   2,100  |    2,100   |       -       |
 | Hash Calculation |     472     |    960   |      -     |       -       |
 | Minor Operation  |     494     |    442   |     185    |      395      |
 | Total Gas Cost   |    28,066   |  23,502  |    2,285   |      **395**      |
-*Replay Attack Prevention Gas Cost Comparison*
+
+*Replay Attack Prevention Gas Cost Comparison Table*
 
 ## Abstract
 
@@ -29,7 +34,7 @@ This paper has been submitted for publication in ***5th Conference on Blockchain
 
 We provided all replay attack prevention algorithms for each scheme in the `contracts` folder.  We wrote our algorithms in [Solidity](https://soliditylang.org/) and deployed them to an Ethereum Testnet using [Online Remix IDE](https://remix.ethereum.org/).
 
-After investigating the results of each algorithms, we provided the CSV files of our raw data and a Jupyter Notebook file that are used to create our experiment results in the `data` folder.
+After investigating the results of each algorithm, we provided the CSV files of our raw data and a Jupyter Notebook file that are used to create our experiment results in the `data` folder.
 
 ## Getting our repository
 
