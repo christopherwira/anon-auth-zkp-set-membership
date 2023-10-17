@@ -2,7 +2,7 @@
 
 by Christopher Wiraatmaja, Shoji Kasahara.
 
-This paper will be presented at ***5th Conference on Blockchain Research & Applications for Innovative Networks and Services (BRAINS23)***.
+This paper was presented at ***5th Conference on Blockchain Research & Applications for Innovative Networks and Services (BRAINS23)***.
 
 >We proposed a technique to prevent replay attacks into an authentication setting that preserves its user's privacy. Using our previous technique, we developed a blockchain-based authentication scheme that achieves cheaper gas costs and provides better scalability compared to prior works.
 
